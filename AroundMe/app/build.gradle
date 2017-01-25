@@ -1,0 +1,102 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
+apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+android {
+    signingConfigs {
+        config {
+
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+    compileSdkVersion 25
+    buildToolsVersion "25.0.1"
+    defaultConfig {
+        applicationId "com.angopapo.aroundme"
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 7
+        versionName "1.2.1"
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            shrinkResources false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable false
+            jniDebuggable false
+            signingConfig signingConfigs.config
+            zipAlignEnabled true
+        }
+        debug {
+            debuggable true
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven { url 'https://maven.fabric.io/public' }
+}
+
+android {
+    dexOptions {
+        jumboMode = true
+        javaMaxHeapSize "4g"
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    // Navigation Drawer Library
+    compile('com.mikepenz:materialdrawer:5.3.0@aar') {
+        transitive = true
+    }
+    // Debugger Tools libraries
+    //debugCompile 'com.facebook.stetho:stetho:1.2.0'
+    //debugCompile 'com.parse:parseinterceptors:0.0.2'
+    //Google, Inc (Play services) Libraries
+    compile 'com.google.android.gms:play-services-maps:10.0.1'
+    compile 'com.google.android.gms:play-services-location:10.0.1'
+    compile 'com.google.android.gms:play-services-ads:10.0.1'
+    // Google, Inc (Support) Libraries
+    compile 'com.android.support:support-v13:25.1.0'
+    compile 'com.android.support:support-v4:25.1.0'
+    compile 'com.android.support:design:25.1.0'
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'com.android.support:multidex:1.0.1'
+    // Parse Server API SDK
+    compile project(':ParseUI-Widget')
+    compile 'com.parse:parse-android:1.13.1'
+    compile 'com.parse.bolts:bolts-android:1.4.0'
+    compile 'com.github.tgio:parse-livequery:1.0.3'
+    compile 'com.parse:parsefacebookutils-v4-android:1.10.3@aar'
+    // Facebook, Inc SDKs
+    compile 'com.facebook.android:audience-network-sdk:4.18.0'
+    compile 'com.facebook.android:facebook-android-sdk:4.7.0'
+    compile 'com.facebook.android:account-kit-sdk:4.+'
+    // Libraries for loading images
+    compile 'com.facebook.fresco:imagepipeline-okhttp3:0.11.0+'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.facebook.fresco:fresco:1.0.0'
+    // Location Helper Library
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit:converter-gson:2.0.0-beta1'
+    // Time library
+    compile 'joda-time:joda-time:2.9.7'
+    // Others
+    compile 'com.skyfishjy.ripplebackground:library:1.0.1'
+    compile 'com.jakewharton:butterknife:7.0.1'
+}

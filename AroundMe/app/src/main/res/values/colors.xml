@@ -1,0 +1,26 @@
+<resources>
+    <color name="text_color">#454648</color>
+    <color name="secondary_text_color">#ff8f3d45</color>
+    <color name="light_text_color">#fff</color>
+    <color name="light_background_color">#fff</color>
+    <color name="background_color">#ce0404</color>
+    <color name="alizarin">#f9375e</color>
+    <color name="alizarin_second">#e78172</color>
+    <color name="green">#27ae60</color>
+    <color name="green_second">#2dd176</color>
+    <color name="gray">#ededed</color>
+    <color name="white">#ffffff</color>
+    <color name="transparent">@android:color/transparent</color>
+    <color name="black">#000000</color>
+    <color name="red">#f42020</color>
+    <color name="invite_friends_header_text">#f9375e</color>
+    <color name="invite_friends_close_text">#AAAAAA</color>
+
+    <!-- Grays -->
+    <color name="gray6">#e4e4e4</color>
+    <color name="gray15">#A4A4A4</color>
+    <color name="gray20">#656565</color>
+    <color name="gray3">#8b8a8d</color>
+    <color name="gray2">@android:color/darker_gray</color>
+
+</resources>

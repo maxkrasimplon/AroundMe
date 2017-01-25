@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="app/src/androidTest/java"/>
+	<classpathentry kind="src" path="app/src/main/java"/>
+	<classpathentry kind="src" path="ParseUI-Widget/build/generated/source/buildConfig/androidTest/debug"/>
+	<classpathentry kind="src" path="ParseUI-Widget/build/generated/source/buildConfig/debug"/>
+	<classpathentry kind="src" path="ParseUI-Widget/build/generated/source/buildConfig/release"/>
+	<classpathentry kind="src" path="ParseUI-Widget/build/generated/source/r/androidTest/debug"/>
+	<classpathentry kind="src" path="ParseUI-Widget/src/main/java"/>
+	<classpathentry kind="lib" path="gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="lib" path="ParseUI-Widget/build/intermediates/bundles/debug/classes.jar"/>
+	<classpathentry kind="lib" path="ParseUI-Widget/build/intermediates/bundles/release/classes.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="ParseUI-Widget/build/intermediates/classes/debug"/>
+</classpath>

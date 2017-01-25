@@ -1,0 +1,131 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context="com.angopapo.aroundme.MyVisitores.MyVisitorsActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/alizarin"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar">
+
+        <GridView
+            android:id="@+id/grid_who_see_users"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="1dp"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="2dp"
+            android:horizontalSpacing="2dp"
+            android:numColumns="3"
+            android:gravity="center_horizontal"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@color/alizarin"
+        android:gravity="center"
+        android:layout_below="@+id/toolbar"
+        android:id="@+id/linearLayout22"
+        android:measureWithLargestChild="false"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/offline_mode"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            android:layout_gravity="center"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/noUsersFound"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:background="@android:color/white"
+        android:padding="40dp"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/menu_visitor"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/whoo_no_user"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="10dp" />
+
+        <Button
+            android:id="@+id/button_retry"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:textSize="12sp"
+            android:text="@string/whoo_button_near"
+            android:background="@drawable/button_corner"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_loading_messages"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:background="@android:color/white"
+        android:padding="40dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:adjustViewBounds="true"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color"
+            android:layout_gravity="center_horizontal"
+            android:textSize="15sp"
+            android:textStyle="italic"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="Looking for visitors" />
+
+
+
+    </LinearLayout>
+
+    <com.angopapo.aroundme.InternetHelper.WaitForInternetConnectionView
+        android:id="@+id/wait_for_internet_connection"
+        android:layout_below="@+id/toolbar"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

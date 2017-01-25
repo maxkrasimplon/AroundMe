@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.angopapo.aroundme">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="com.android.vending.BILLING" />
+    <!-- <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="com.angopapo.angopapo.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+
+    <permission
+        android:name="com.angopapo.angopapo.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <application
+        android:name=".Aplication.Application"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/CustomTheme">
+
+        <!-- Facebook Setup begin here -->
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <provider
+            android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider228948044193904"
+            android:exported="true" />
+
+        <meta-data
+            android:name="com.facebook.accountkit.ApplicationName"
+            android:value="@string/app_name" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="com.facebook.accountkit.ClientToken"
+            android:value="@string/ACCOUNT_KIT_CLIENT_TOKEN" />
+        <meta-data
+            android:name="com.facebook.accountkit.FacebookAppEventsEnabled"
+            android:value="false" />
+
+        <activity
+            android:name="com.facebook.accountkit.ui.AccountKitActivity"
+            android:theme="@style/PhoneLoginTheme"
+            tools:replace="android:theme" />
+
+        <!-- Facebook Setup ends here -->
+
+        <receiver android:name=".AroundMeHelper.NetworkChangeReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="com.facebook.ads.AudienceNetworkActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+
+        <meta-data
+            android:name="com.parse.push.notification_icon"
+            android:resource="@drawable/ic_heart_light" />
+
+        <activity
+            android:name=".Profile.MyProfile"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/app_name"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".Aplication.splashscreen"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/app_name"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/EditTextAlizarinStyle">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Authetication.SignUpActivity"
+            android:configChanges="orientation|screenSize"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".Messaging.MessengerActivity"
+            android:configChanges="orientation|screenSize"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!--                 IMPORTANT: Change "YOUR_SENDER_ID" to your GCM Sender Id. -->
+        <meta-data
+            android:name="com.parse.push.gcm_sender_id"
+            android:value="id:842306250514" />
+
+        <service android:name="com.parse.PushService" />
+
+        <receiver android:name="com.parse.ParseBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.parse.GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="com.angopapo.angopapo" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".ClassHelper.AroundMeParsePushReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.parse.push.intent.RECEIVE" />
+                <action android:name="com.parse.push.intent.DELETE" />
+                <action android:name="com.parse.push.intent.OPEN" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".Messaging.MessageListActivity"
+            android:configChanges="orientation|screenSize"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".Imagehelper.ImageViewerActivity"
+            android:configChanges="orientation|screenSize"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".HotOrNot.HotOrNotActivity"
+            android:configChanges="orientation|screenSize"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".Profile.ProfileUerActivity"
+            android:configChanges="orientation|screenSize"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".AroundMe.AroundMeActivity"
+            android:configChanges="orientation|screenSize"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".MyVisitores.MyVisitorsActivity"
+            android:configChanges="orientation|screenSize"
+            android:launchMode="singleTask" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="@string/google_api_key" />
+
+        <activity
+            android:name=".Passport.MapsActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".Authetication.SaveLocationActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/title_activity_save_location"
+            android:noHistory="false" />
+        <activity
+            android:name=".Passport.UpdateLocationActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/title_activity_save_location"
+            android:noHistory="false" />
+        <activity
+            android:name=".MyVisitores.VisitorActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/title_activity_visitor"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".Passport.TravelActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/title_activity_travel"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".Authetication.ForgotActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/title_activity_forgot"
+            android:launchMode="singleTask"
+            android:theme="@style/CustomTheme" />
+        <activity
+            android:name=".Authetication.LoginActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:theme="@style/CustomTheme" />
+        <activity
+            android:name=".Aplication.DispatchActivity"
+            android:configChanges="orientation|screenSize"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".Settings.ShareActivity"
+            android:configChanges="orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:label="@string/app_name"
+            android:theme="@style/MyAppCompatDialogTheme" />
+        <activity
+            android:name=".Settings.SettingsActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/settings_title"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".Settings.AboutActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/settings_title"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".Settings.TermsActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/settings_title"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".Settings.PrivacyActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/settings_title"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".Passport.ManuelMapsActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/settings_title"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".Settings.MyAccountActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/settings_title"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".VipAccount.VipActivationActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/settings_title"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".VipAccount.VipAccountActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/settings_title"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".VipAccount.StoreActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/settings_title"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".Profile.ActivityProfileEdit"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/settings_title"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".Settings.PrivateModeActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/settings_title"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".PrivateProfile.PrivateProfileActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/settings_title"
+            android:launchMode="singleTask" />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="7eeaecc4cc6556eb4a912b0f93d8909217762069" />
+
+        <activity
+            android:name=".Authetication.LoggingActivity"
+            android:label="@string/title_activity_logging" />
+    </application>
+
+</manifest>

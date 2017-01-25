@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:emojicon="http://schemas.android.com/tools"
+    android:id="@+id/root_view"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/alizarin">
+
+
+    </android.support.v7.widget.Toolbar>
+
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                xmlns:fresco="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/user_to_photo"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/profile_default_photo"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/user_back"
+                android:layout_toEndOf="@+id/user_back"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                fresco:roundedCornerRadius="2dp"
+                fresco:placeholderImage="@drawable/profile_default_photo"
+                fresco:roundingBorderWidth="1dp"
+                fresco:roundingBorderColor="@color/white"
+                fresco:roundAsCircle= "true" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_gravity="center"
+                android:textColor="#fff"
+                android:id="@+id/user_name"
+                android:gravity="left|top"
+                android:layout_above="@+id/user_online"
+                android:layout_centerHorizontal="true" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_keyboard_backspace_white_24dp"
+                android:id="@+id/user_back"
+                android:layout_alignTop="@+id/user_name"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="false"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:id="@+id/user_online"
+                android:textSize="13sp"
+                android:layout_alignBottom="@+id/user_to_photo"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="@color/red"
+            android:gravity="center"
+            android:layout_below="@+id/toolbar"
+            android:id="@+id/linearLayout22"
+            android:measureWithLargestChild="false"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/offline_mode"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:layout_gravity="center"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+        <ListView
+        android:id="@+id/message_list"
+        android:layout_above="@+id/input_wrapper"
+        android:layout_below="@+id/linearLayout22"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:stackFromBottom="true"
+        android:transcriptMode="alwaysScroll"
+        android:layout_marginBottom="4dp" />
+
+    <LinearLayout
+        android:id="@+id/input_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:animateLayoutChanges="true"
+        android:background="@color/gray">
+
+        <RelativeLayout
+            android:id="@+id/layout_image_with_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:visibility="gone">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/image_for_send"
+                android:layout_width="70dp"
+                android:layout_height="70dp" />
+
+            <FrameLayout
+                android:id="@+id/layout_shadow"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/black_background_with_overlay" />
+
+            <TextView
+                android:id="@+id/text_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                />
+
+            <ImageView
+                android:id="@+id/image_done"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_done"
+                android:visibility="invisible"
+                android:layout_centerInParent="true"/>
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:id="@+id/progress_upload"
+                android:layout_alignBottom="@+id/image_for_send"
+                android:layout_width="70dp"
+                android:layout_height="5dp"
+                android:max="100"/>
+
+            <ImageView
+                android:id="@+id/image_remove_image"
+                android:clickable="true"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignRight="@+id/image_for_send"
+                android:layout_alignTop="@+id/image_for_send"
+                android:src="@drawable/button_remove_image_for_send"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="4dp"
+            android:gravity="center_vertical|center">
+
+            <ImageView
+                android:id="@+id/button_attach_image"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/circle_button"
+                android:src="@drawable/ic_action_twitter_camera"
+                android:padding="4dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minHeight="50dp"
+                android:orientation="horizontal"
+                android:layout_gravity="bottom|center"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:background="@drawable/input"
+                android:layout_marginTop="5dp"
+                android:weightSum="1"
+                android:layout_marginLeft="2dp">
+
+
+                <EditText
+                    android:id="@+id/txt_msg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    emojicon:emojiconSize="28sp"
+                    android:hint="@string/white_here"
+                    android:inputType="textMultiLine|textImeMultiLine"
+                    android:textSize="15sp"
+                    android:textColorHint="#c4c0bd"
+                    android:background="@null"
+                    android:textColor="@color/black"
+                    android:paddingBottom="3dp"
+                    android:paddingTop="3dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="2dp"
+                    android:maxLines="5" />
+
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/btn_send_msg"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/send_button"
+                android:src="@drawable/input_send"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="4dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.angopapo.aroundme.InternetHelper.WaitForInternetConnectionView
+        android:id="@+id/wait_for_internet_connection"
+        android:layout_below="@+id/toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

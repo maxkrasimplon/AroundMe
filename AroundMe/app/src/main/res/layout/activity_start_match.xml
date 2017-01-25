@@ -1,0 +1,208 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.angopapo.aroundme.HotOrNot.HotOrNotActivity"
+    android:background="#ffffff">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/alizarin"
+        android:minHeight="?attr/actionBarSize"/>
+
+    <com.skyfishjy.library.RippleBackground
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:id="@+id/content"
+        app:rb_color="@color/alizarin"
+        app:rb_radius="35dp"
+        app:rb_rippleAmount="3"
+        app:rb_duration="4000"
+        app:rb_scale="6">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            xmlns:fresco="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_photo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            fresco:roundedCornerRadius="5dp"
+            android:layout_centerInParent="true"
+            fresco:placeholderImage="@drawable/profile_default_photo"
+            fresco:roundAsCircle= "true"
+            fresco:roundingBorderWidth="5dp"
+            fresco:roundingBorderColor="@color/alizarin"/>
+
+
+    </com.skyfishjy.library.RippleBackground>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@color/red"
+        android:gravity="center"
+        android:layout_below="@+id/toolbar"
+        android:id="@+id/linearLayout22"
+        android:measureWithLargestChild="false"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/offline_mode"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            android:layout_gravity="center"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/linearLayout22"
+        android:padding="5dp">
+
+        <FrameLayout
+            android:id="@+id/user_info_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/control_wrapper"
+            android:layout_alignParentTop="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/match_looking"
+                android:textColor="@color/gray2"
+                android:layout_gravity="bottom|center"
+                android:layout_marginBottom="30dp"
+                android:textSize="15sp" />
+        </FrameLayout>
+
+
+        <LinearLayout
+            android:id="@+id/control_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:baselineAligned="false"
+            android:background="@drawable/star_match_input_bg"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/image_abort"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:adjustViewBounds="true"
+                    android:clickable="true"
+                    android:visibility="visible"
+                    android:src="@drawable/dislike" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:id="@+id/image_info"
+                    android:src="@drawable/info"
+                    android:alpha="0.7" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/image_match"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/like"
+                    android:clickable="true"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/noUsersFound"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:background="@android:color/white"
+        android:padding="40dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/placeholder_empty"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/meetings_usernot"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="10dp" />
+
+
+        <Button
+            android:id="@+id/button_retry"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="@string/usernear_update_loc"
+            android:background="@drawable/button_corner"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center" />
+
+            <Button
+                android:id="@+id/button_retry2"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/match_travel_now"
+                android:background="@drawable/button_corner_red"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_gravity="center" />
+
+
+    </LinearLayout>
+
+    <com.angopapo.aroundme.InternetHelper.WaitForInternetConnectionView
+        android:id="@+id/wait_for_internet_connection"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+</RelativeLayout>

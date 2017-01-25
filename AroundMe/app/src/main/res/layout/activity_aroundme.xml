@@ -1,0 +1,168 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:id="@+id/aroundme"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    tools:context="com.angopapo.aroundme.AroundMe.AroundMeActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/alizarin"/>
+
+
+
+    <LinearLayout
+        android:id="@+id/noUsersFound"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:background="@android:color/white"
+        android:padding="40dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/cat_clean"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/text_color"
+            android:textSize="16sp"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/sorry_user_not_found_see_the_location_in_your_settings_account_update_location"/>
+
+        <Button
+            android:id="@+id/button_retry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="bottom"
+            android:text="RETRY"
+            android:background="@color/alizarin"/>
+    </LinearLayout>
+
+    <com.angopapo.aroundme.InternetHelper.WaitForInternetConnectionView
+        android:id="@+id/wait_for_internet_connection"
+        android:layout_below="@+id/toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/ad_banner">
+
+        <LinearLayout
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/gender_wrapper">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <TextView
+                    android:id="@+id/button_male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="MALE"
+                    android:textColor="@color/white"
+                    android:background="@drawable/selector_alizarin_button"
+                    android:padding="10dp"
+                    android:textStyle="normal|bold" />
+
+                <TextView
+                    android:id="@+id/button_female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="FEMALE"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:background="@drawable/selector_alizarin_button"
+                    android:padding="10dp"
+                    android:textStyle="normal|bold" />
+
+                <TextView
+                    android:id="@+id/button_both"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="BOTH"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:background="@drawable/selector_alizarin_button"
+                    android:padding="10dp"
+                    android:textStyle="normal|bold" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/red"
+                android:gravity="center"
+                android:id="@+id/linearLayout22"
+                android:measureWithLargestChild="false"
+                android:visibility="gone"
+                android:layout_above="@+id/user_near_me_grid"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/offline_mode"
+                    android:textStyle="bold"
+                    android:textSize="13sp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <GridView
+            android:id="@+id/user_near_me_grid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/gender_wrapper"
+            android:layout_marginTop="1dp"
+            android:gravity="center_horizontal"
+            android:numColumns="auto_fit"
+            android:stretchMode="columnWidth" />
+
+
+    </RelativeLayout>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/ad_banner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="visible"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id" />
+
+</RelativeLayout>
